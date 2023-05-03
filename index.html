@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guessing Game</title>
+    <style>
+              h1 {
+                  margin: 50px;
+                  font-size: 3vw;
+                  font-family:Arial, Helvetica, sans-serif;
+              }
+              div {
+                  text-align: center;
+              }
+              p {
+                  font-size: large;
+                  font-weight: bold;
+              }
+              button {
+                  padding:  2vw;
+                  border-radius: 5px;
+                  border: none;
+                  background-color: #f7b9b9d7;
+                  font-weight: 200;
+                  cursor: pointer;
+                  box-shadow: 2px 2px 10px rgba(49, 48, 48, 0.545);
+              }
+
+              button:hover {
+                  background-color:#f4c5c5d7 ;
+                  color: black;
+              }
+
+              button:active {
+                  background-color:#e7c5c5d7;
+              }
+    </style>
+  </head>
+
+  <body>
+    <h1>
+      <center>Guess the Number Game</center>
+    </h1>
+    <div>
+      <button id="bt">Start game</button>
+      <p></p>
+    </div>
+    <script>
+      let min = 1;
+      let max = 100;
+      let guess;
+      let count = 0;
+
+      document.getElementById("bt").addEventListener("click", function () {
+        function removeElement() {
+          var elements = document.getElementsByTagName("p");
+          while (elements[0]) {
+            elements[0].parentNode.removeChild(elements[0]);
+          }
+        }
+
+        let num = parseInt(prompt("Enter a number between 1 and 100:"));
+        if (num >= min && num <= max) {
+          while (count < 5) {
+            guess = Math.floor(Math.random() * max + min);
+            count++;
+
+            tn = document.getElementsByTagName("div");
+            tag = document.createElement("p");
+
+            tag.innerText = "Computer guessed " + guess;
+            tn[0].appendChild(tag);
+            if (guess === num) {
+              tn = document.getElementsByTagName("div");
+              tag = document.createElement("p");
+              tag.innerText = "Computer wins";
+              tn[0].appendChild(tag);
+              break;
+            }
+          }
+
+          if (count === 5) {
+            tn = document.getElementsByTagName("div");
+            tag = document.createElement("p");
+            tag.innerText = "You win";
+            tn[0].appendChild(tag);
+          }
+        } else {
+          alert("Invalid input. Enter a number between 1 and 100");
+        }
+      });
+    </script>
+  </body>
+</html>
