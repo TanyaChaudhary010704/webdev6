@@ -5,37 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guessing Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-              h1 {
-                  margin: 50px;
-                  font-size: 3vw;
-                  font-family:Arial, Helvetica, sans-serif;
-              }
-              div {
-                  text-align: center;
-              }
-              p {
-                  font-size: large;
-                  font-weight: bold;
-              }
-              button {
-                  padding:  2vw;
-                  border-radius: 5px;
-                  border: none;
-                  background-color: #f7b9b9d7;
-                  font-weight: 200;
-                  cursor: pointer;
-                  box-shadow: 2px 2px 10px rgba(49, 48, 48, 0.545);
-              }
+      h1 {
+        margin: 50px;
+        font-size: 3vw;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      div {
+        text-align: center;
+      }
+      p {
+        font-size: large;
+        font-weight: bold;
+      }
+      button {
+        padding: 2vw;
+        border-radius: 5px;
+        border: none;
+        background-color: #f7b9b9d7;
+        font-weight: 200;
+        cursor: pointer;
+        box-shadow: 2px 2px 10px rgba(49, 48, 48, 0.545);
+      }
 
-              button:hover {
-                  background-color:#f4c5c5d7 ;
-                  color: black;
-              }
+      button:hover {
+        background-color: #f4c5c5d7;
+        color: black;
+      }
 
-              button:active {
-                  background-color:#e7c5c5d7;
-              }
+      button:active {
+        background-color: #e7c5c5d7;
+      }
     </style>
   </head>
 
@@ -60,13 +67,13 @@
             elements[0].parentNode.removeChild(elements[0]);
           }
         }
-
+        removeElement();
         let num = parseInt(prompt("Enter a number between 1 and 100:"));
         if (num >= min && num <= max) {
           while (count < 5) {
             guess = Math.floor(Math.random() * max + min);
             count++;
-
+            console.log(guess);
             tn = document.getElementsByTagName("div");
             tag = document.createElement("p");
 
@@ -90,6 +97,7 @@
         } else {
           alert("Invalid input. Enter a number between 1 and 100");
         }
+        count=0;
       });
     </script>
   </body>
