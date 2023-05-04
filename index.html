@@ -52,7 +52,6 @@
     </h1>
     <div>
       <button id="bt">Start game</button>
-      <p></p>
     </div>
     <script>
       let min = 1;
@@ -64,40 +63,38 @@
         function removeElement() {
           var elements = document.getElementsByTagName("p");
           while (elements[0]) {
-            elements[0].parentNode.removeChild(elements[0]);
+            elements[0].remove(elements[0]);
           }
         }
         removeElement();
+        function addElement() {
+          guess = Math.floor(Math.random() * max + min);
+          tn = document.getElementsByTagName("div");
+          tag = document.createElement("p");
+          tn[0].appendChild(tag);
+        }
+
         let num = parseInt(prompt("Enter a number between 1 and 100:"));
         if (num >= min && num <= max) {
           while (count < 5) {
-            guess = Math.floor(Math.random() * max + min);
+            addElement();
+            tag.innerText = "Computer guessed: " + guess;
             count++;
-            console.log(guess);
-            tn = document.getElementsByTagName("div");
-            tag = document.createElement("p");
 
-            tag.innerText = "Computer guessed " + guess;
-            tn[0].appendChild(tag);
             if (guess === num) {
-              tn = document.getElementsByTagName("div");
-              tag = document.createElement("p");
+              addElement();
               tag.innerText = "Computer wins";
-              tn[0].appendChild(tag);
               break;
             }
           }
-
           if (count === 5) {
-            tn = document.getElementsByTagName("div");
-            tag = document.createElement("p");
+            addElement();
             tag.innerText = "You win";
-            tn[0].appendChild(tag);
           }
         } else {
           alert("Invalid input. Enter a number between 1 and 100");
         }
-        count=0;
+        count = 0;
       });
     </script>
   </body>
